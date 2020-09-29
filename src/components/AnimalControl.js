@@ -10,7 +10,7 @@ class AnimalControl extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      headlines: []
+      animals: []
     };
   }
 
@@ -20,14 +20,15 @@ class AnimalControl extends React.Component {
     .then(
         (jsonifiedResponse) => {
           console.log(jsonifiedResponse);
-          if (jsonifiedResponse.status === 200 && jsonifiedResponse.ok) {
+          // if (jsonifiedResponse.status === 200 && jsonifiedResponse.ok) {
+          //   console.log(jsonifiedResponse)
             this.setState({
               isLoaded: true,
-              animals: jsonifiedResponse.results
+              animals: jsonifiedResponse
             });
-          } else {
-            return false;
-          }
+          // } else {
+          //   return false;
+          // }
         })
     .catch((error) => {
       this.setState({
@@ -44,10 +45,11 @@ class AnimalControl extends React.Component {
 
   render() {
     const {error, isLoaded, animals} = this.state;
+    console.log(animals)
     if(error) {
       return <React.Fragment> Error: {error.message} </React.Fragment>
     } else if (!isLoaded) {
-      return <React.Fragment>Loading...</React.Fragment>;
+      return <React.Fragment>Loading... </React.Fragment>;
     } else {
       return (
         <React.Fragment>
@@ -55,9 +57,9 @@ class AnimalControl extends React.Component {
           {animals.map((animal, index) => 
             <li key={index}>
               <h3>{animal.name}</h3>
-              {/* <p>type: {animals.type}</p>
-              <p>age :{animals.age}</p>
-              <p>gender: {animals.gender}</p> */}
+              <p>type: {animal.type}</p>
+              <p>age :{animal.age}</p>
+              <p>gender: {animal.gender}</p>
             </li>
           )}
           </ul>
