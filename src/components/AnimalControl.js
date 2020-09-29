@@ -4,6 +4,7 @@ import AnimalEdit from './AnimalEdit'
 import AnimalDetails from './AnimalDetails'
 import PropTypes from 'prop-types'
 
+
 class AnimalControl extends React.Component {
   constructor(props) {
     super(props);
@@ -14,33 +15,11 @@ class AnimalControl extends React.Component {
     };
   }
 
-  makeApiCall = () => {
-    fetch("http://localhost:5000/api/v1/animals/")
-    .then(response => response.json())
-    .then(
-        (jsonifiedResponse) => {
-          console.log(jsonifiedResponse);
-          // if (jsonifiedResponse.status === 200 && jsonifiedResponse.ok) {
-          //   console.log(jsonifiedResponse)
-            this.setState({
-              isLoaded: true,
-              animals: jsonifiedResponse
-            });
-          // } else {
-          //   return false;
-          // }
-        })
-    .catch((error) => {
-      this.setState({
-        isLoaded: true,
-        error
-      });
-    })
-  }
+  
 
-  componentDidMount() {
-    this.makeApiCall();
-  }
+  // componentDidMount() {
+  //   this.makeApiCall();
+  // }
 
 
   render() {
