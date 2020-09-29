@@ -8,7 +8,7 @@ function NewAnimalForm() {
   function handleAdd(event) {
     event.preventDefault();
 
-    dispatch(postAnimalToApi({name: event.target.name.value, type: event.target.type.value, age: event.target.age.value, gender: event.target.gender.value}))
+    dispatch(postAnimalToApi({name: event.target.name.value, type: event.target.type.value, age: parseInt(event.target.age.value), gender: event.target.gender.value}))
   }
 
   return (

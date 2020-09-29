@@ -44,7 +44,7 @@ export const postAnimalToApi = (newAnimalobj) => {
   console.log(newAnimalobj.name);
   return dispatch => {
     const requestOptions = {
-      mode: 'cors',
+      
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newAnimalobj)
@@ -55,6 +55,22 @@ export const postAnimalToApi = (newAnimalobj) => {
     })
     .catch(error => {
       console.log("post error", error)
+    })
+  }
+}
+
+export const deleteAnimal = (id) =>{
+  return dispatch => {
+    const requeatOptions = {
+      // mode: 'no-cors',
+      method: 'DELETE'
+    }
+    return fetch("http://localhost:5000/api/v1/animals/" + {id}, requeatOptions)
+    .then( () => {
+      dispatch(makeApiCall())
+    })
+    .catch(error => {
+      console.log('delete error', error)
     })
   }
 }

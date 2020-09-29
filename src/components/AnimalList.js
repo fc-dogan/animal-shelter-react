@@ -15,7 +15,8 @@ function AnimalList(props) {
               name= {animal.name}
               type= {animal.type}
               age= {animal.age}
-              gender= {animal.gender} />
+              gender= {animal.gender}
+              id= {animal.animalId} />
           )}
           </ul>
     </div>

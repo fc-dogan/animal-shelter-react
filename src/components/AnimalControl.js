@@ -23,13 +23,10 @@ class AnimalControl extends React.Component {
   }
 
   onSearchSubmission = (searchObject) => {
-    console.log('onSearchSubmission');
     const { type } = searchObject;
     let typeQuery = (type !== "") ? type : "";
     this.setState({searched: true, searchAnimalType: typeQuery });
   }
-
-
 
   render() {
     const {error, isLoaded, animals} = this.props;
@@ -49,9 +46,9 @@ class AnimalControl extends React.Component {
       }
       return (
         <React.Fragment>
-          <NewAnimalForm />
-          <AnimalList animals= {animalList} />
           <SearchForm onSearchSubmission={this.onSearchSubmission} />
+          <AnimalList animals= {animalList} />
+          <NewAnimalForm />
         </React.Fragment>
       )
     }
