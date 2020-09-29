@@ -28,3 +28,33 @@ export const makeApiCall = () => {
       })
   }
 }
+
+// export const addAnimal = createAction('ADD_TODO', todo => ({
+//   payload: {data: {...todo, completed: false}}
+// }));
+// export const addAnimal = (animal) => ({
+//   type: c.POST_ANIMAL,
+//   animal
+// })
+// export const addTodoSuccess = createAction('ADD_TODO_SUCCESS');
+// export const addTodoError = createAction('ADD_TODO_ERROR');
+
+
+export const postAnimalToApi = (newAnimalobj) => {
+  console.log(newAnimalobj.name);
+  return dispatch => {
+    const requestOptions = {
+      mode: 'cors',
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newAnimalobj)
+    }
+    return fetch('http://localhost:5000/api/v1/animals', requestOptions)
+    .then( () => {
+      dispatch(makeApiCall())
+    })
+    .catch(error => {
+      console.log("post error", error)
+    })
+  }
+}

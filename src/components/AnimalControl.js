@@ -2,6 +2,7 @@ import React from 'react'
 import AnimalList from './AnimalList'
 import AnimalEdit from './AnimalEdit'
 import AnimalDetails from './AnimalDetails'
+import NewAnimalForm from './NewAnimalForm'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { makeApiCall } from '../actions';
@@ -34,6 +35,7 @@ class AnimalControl extends React.Component {
     } else {
       return (
         <React.Fragment>
+          <NewAnimalForm />
           <AnimalList animals= {animals} />
          
         </React.Fragment>
