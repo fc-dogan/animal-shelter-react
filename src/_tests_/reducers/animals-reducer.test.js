@@ -1,6 +1,8 @@
 import animalsReducer from '../../reducers/animals-reducer'
+import * as c from '../../actions/ActionTypes'
 
 describe('animalsReducer', () => {
+  let action;
   const defaultState = {
     isLoading: false,
     animals: [],
@@ -15,7 +17,20 @@ describe('animalsReducer', () => {
         error: null
       }
     )
+  });
+
+  test('requesting animals should successfully change isLoading from false to true', () => {
+    action = {
+      type: c.REQUEST_ANIMALS
+    };
+
+    expect(animalsReducer(defaultState, action)).toEqual({
+        isLoading: true,
+        animals: [],
+        error: null
+    });
   })
+  
   
 
 

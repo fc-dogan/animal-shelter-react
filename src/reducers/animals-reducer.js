@@ -1,3 +1,5 @@
+import * as c from '../actions/ActionTypes'
+
 const defaultState = {
   isLoading: false,
   animals: [],
@@ -5,5 +7,13 @@ const defaultState = {
 };
 
 export default (state= defaultState, action) =>{
- return state;
+  switch(action.type){
+    case c.REQUEST_ANIMALS :
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    default :
+    return state;
+  }
+  
 }
