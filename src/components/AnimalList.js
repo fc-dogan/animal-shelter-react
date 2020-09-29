@@ -1,13 +1,29 @@
 import React from 'react'
 import Animal from './Animal'
+import PropTypes from 'prop-types'
 
-function AnimalList() {
+function AnimalList(props) {
+  const {animals} = props;
+
   return (
     <div>
       <p>Animal List</p>
-      <Animal />
+      <ul>
+          {animals.map((animal, index) => 
+            <Animal 
+              key={index}
+              name= {animal.name}
+              type= {animal.type}
+              age= {animal.age}
+              gender= {animal.gender} />
+          )}
+          </ul>
     </div>
   )
+}
+
+AnimalList.propTypes = {
+  animals: PropTypes.array
 }
 
 export default AnimalList

@@ -34,16 +34,8 @@ class AnimalControl extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <ul>
-          {animals.map((animal, index) => 
-            <li key={index}>
-              <h3>{animal.name}</h3>
-              <p>type: {animal.type}</p>
-              <p>age :{animal.age}</p>
-              <p>gender: {animal.gender}</p>
-            </li>
-          )}
-          </ul>
+          <AnimalList animals= {animals} />
+         
         </React.Fragment>
       )
     }
