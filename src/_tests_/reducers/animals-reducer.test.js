@@ -9,6 +9,12 @@ describe('animalsReducer', () => {
     error: null
   };
 
+  const loadingState = {
+    isLoading: false,
+    animals: [],
+    error: null
+  };
+
   test('should successfully return default state if no action is passed into it', () => {
     expect(animalsReducer(defaultState, {type:null})).toEqual(
       {
@@ -29,6 +35,19 @@ describe('animalsReducer', () => {
         animals: [],
         error: null
     });
+  });
+
+  test('successfully getting animals should change isLoading to false and update animals', () => {
+    const animals = "an animal";
+    action = {
+      type: c.GET_ANIMALS_SUCCESS,
+      animals
+    };
+    expect(animalsReducer(loadingState, action)).toEqual({
+      isLoading: false,
+      animals: 'an animal',
+      error: null
+    })
   })
   
   

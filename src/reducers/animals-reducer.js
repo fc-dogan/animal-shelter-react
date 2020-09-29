@@ -6,6 +6,8 @@ const defaultState = {
   error: null
 };
 
+
+
 export default (state= defaultState, action) =>{
   switch(action.type){
     case c.REQUEST_ANIMALS :
