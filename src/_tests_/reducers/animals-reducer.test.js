@@ -49,6 +49,20 @@ describe('animalsReducer', () => {
       error: null
     })
   })
+
+  test('failing to get animals should change isLoading to false and add an error message', () => {
+    const error = "An error";
+    action = {
+      type: c.GET_ANIMALS_FAILURE,
+      error
+    };
+
+    expect(animalsReducer(loadingState, action)).toEqual({
+        isLoading: false,
+        animals: [],
+        error: "An error"
+    });
+  });
   
   
 

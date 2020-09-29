@@ -19,6 +19,11 @@ export default (state= defaultState, action) =>{
         isLoading: false,
         animals: action.animals
       })
+    case c.GET_ANIMALS_FAILURE:
+      return Object.assign({}, state,{
+        isLoading: false,
+        error: action.error
+      })
     default :
     return state;
   }
