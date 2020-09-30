@@ -29,17 +29,6 @@ export const makeApiCall = () => {
   }
 }
 
-// export const addAnimal = createAction('ADD_TODO', todo => ({
-//   payload: {data: {...todo, completed: false}}
-// }));
-// export const addAnimal = (animal) => ({
-//   type: c.POST_ANIMAL,
-//   animal
-// })
-// export const addTodoSuccess = createAction('ADD_TODO_SUCCESS');
-// export const addTodoError = createAction('ADD_TODO_ERROR');
-
-
 export const postAnimalToApi = (newAnimalobj) => {
   console.log(newAnimalobj.age);
   return (dispatch) => {

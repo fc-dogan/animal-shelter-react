@@ -1,6 +1,7 @@
 import React from 'react'
 import Animal from './Animal'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 function AnimalList(props) {
   const {animals} = props;
@@ -19,6 +20,7 @@ function AnimalList(props) {
               id= {animal.animalId} />
           )}
           </ul>
+        <Link to="/newanimal" ><button>Add new animal to list</button></Link>
     </div>
   )
 }

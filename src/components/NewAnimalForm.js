@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { postAnimalToApi } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 function NewAnimalForm() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function NewAnimalForm() {
           placeholder="Gender" /><br />
         <button type="submit">Add animal</button>
       </form>
-      <button>Return to main page</button>
+      <Link to='/' ><button>Return to main page</button> </Link>
     </React.Fragment>
   )
 }

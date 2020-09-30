@@ -7,6 +7,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { makeApiCall } from '../actions';
 import SearchForm from './SearchForm'
+import { BrowserRouter as Router, Switch, Route , Link } from 'react-router-dom';
+
+
 
 class AnimalControl extends React.Component {
   constructor(props) {
@@ -22,6 +25,12 @@ class AnimalControl extends React.Component {
     dispatch(makeApiCall());
   }
 
+  toggleSearched =() =>{
+    this.setState({
+      searched: false
+    })
+  }
+
   onSearchSubmission = (searchObject) => {
     const { type } = searchObject;
     let typeQuery = (type !== "") ? type : "";
@@ -30,6 +39,7 @@ class AnimalControl extends React.Component {
 
   render() {
     const {error, isLoaded, animals} = this.props;
+    let button = null
     console.log(animals)
     if(error) {
       return <React.Fragment> Error: {error.message} </React.Fragment>
@@ -37,19 +47,23 @@ class AnimalControl extends React.Component {
       return <React.Fragment>Loading... </React.Fragment>;
     } else {
       let animalList;
-      if (this.state.searchAnimalType !== null ) {
+      if (this.state.searched === true ) {
         animalList = animals.filter((animal) => {
           return animal.type.includes(this.state.searchAnimalType);
         });
+        button = <button onClick={this.toggleSearched}>return to all animal list</button>
       } else {
         animalList = animals
       }
       return (
-        <React.Fragment>
+        <Router>
           <SearchForm onSearchSubmission={this.onSearchSubmission} />
-          <AnimalList animals= {animalList} />
-          <NewAnimalForm />
-        </React.Fragment>
+          <Switch>
+            <Route exact path='/' component={() => <AnimalList animals= {animalList} />} />
+            <Route exact path='/newanimal' component={NewAnimalForm} />
+          </Switch>
+            {button}
+        </Router>
       )
     }
  

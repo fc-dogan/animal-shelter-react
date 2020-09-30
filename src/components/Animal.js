@@ -2,8 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types'
 import { deleteAnimal } from '../actions';
-import { makeApiCall } from '../actions';
-// import { Link } from 'react-router-dom';
+// import { makeApiCall } from '../actions';
 
 function Animal(props) {
   const dispatch = useDispatch();
