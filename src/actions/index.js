@@ -41,36 +41,37 @@ export const makeApiCall = () => {
 
 
 export const postAnimalToApi = (newAnimalobj) => {
-  console.log(newAnimalobj.name);
-  return dispatch => {
+  console.log(newAnimalobj.age);
+  return (dispatch) => {
     const requestOptions = {
-      
+      // mode: 'no-cors',
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newAnimalobj)
     }
-    return fetch('http://localhost:5000/api/v1/animals', requestOptions)
-    .then( () => {
+     fetch('http://localhost:5000/api/v1/animals', requestOptions)
+     .then( () => {
       dispatch(makeApiCall())
     })
     .catch(error => {
       console.log("post error", error)
     })
+  
   }
 }
 
 export const deleteAnimal = (id) =>{
-  return dispatch => {
-    const requeatOptions = {
-      // mode: 'no-cors',
+  console.log(id);
+  return (dispatch) => {
+    const requestOptions = {
       method: 'DELETE'
     }
-    return fetch("http://localhost:5000/api/v1/animals/" + {id}, requeatOptions)
-    .then( () => {
+     fetch(`http://localhost:5000/api/v1/animals/${id}`, requestOptions)
+     .then( () => {
       dispatch(makeApiCall())
     })
     .catch(error => {
-      console.log('delete error', error)
+      console.log("post error", error)
     })
   }
 }

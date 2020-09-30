@@ -9,29 +9,13 @@ function Animal(props) {
   const dispatch = useDispatch();
   const { name, type, age, gender, id } =props
 
-//  async function handleDeleteAnimal(id){
-//   const requestOptions = { 
-//       method: 'DELETE',
-//     };
-//     fetch(('http://localhost:5004/api/animals/' + id), requestOptions)
-//     .then(response => response.json())
-//     //   console.log("DATA", data)
-//     //   dispatch(hideForm());
-//     //   if (!response.ok) {
-//     //     console.log("delete error")
-//     //   }
-//     // }
-//     .catch(error => {
-//       console.log("there was a delete error", error)
-//     });
-//  }
-
   const handleDeleteAnimal =(id) => {
-   fetch(`http://localhost:5000/api/v1/animals/${id}`, {
-    method: 'DELETE',
-    mode: 'cors',
-  })
-  dispatch(makeApiCall());
+    dispatch(deleteAnimal(id))
+  //  fetch(`http://localhost:5000/api/v1/animals/${id}`, {
+  //   method: 'DELETE',
+  //   // mode: 'cors',
+  // })
+  // dispatch(makeApiCall());
 }
 
   return (
@@ -54,7 +38,7 @@ Animal.propTypes = {
   type: PropTypes.string, 
   age: PropTypes.number,
   gender: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.number
 }
 
 
